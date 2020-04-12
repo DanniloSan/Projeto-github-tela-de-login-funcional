@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Threading;
+
+namespace Tela_de_login_TDE
+{
+    public partial class Form1 : Form
+    {
+        Thread nt;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(Txtlogin.Text=="danilo@gmail.com" && TxtSenha.Text=="12345")
+                {
+                this.Close();
+                nt = new Thread(Novoform);
+                nt.SetApartmentState(ApartmentState.STA);
+                nt.Start();
+                }
+            else
+                {
+                    MessageBox.Show("Your password is wrong");
+                }
+        }
+
+        private void Novoform()
+        {
+            Application.Run(new Form2());
+        }
+    }
+}
